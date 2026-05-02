@@ -228,7 +228,7 @@ function generateNovelIndex(novel, volumes) {
   const volumesHtml = volumes.map(volume => {
     const chaptersHtml = volume.chapters.map(ch => `
       <li>
-        <a href="/${novel.name}/chapters/${volume.name}/${ch.number}.html">
+        <a href="./chapters/${volume.name}/${ch.number}.html">
           <span class="chapter-num">第${ch.number}章</span>
           <span class="chapter-title">${ch.title}</span>
         </a>
@@ -474,7 +474,7 @@ function generateSearchIndex(novels) {
           novelName: novel.name,
           volumeName: volume.name,
           chapterNumber: chapter.number,
-          url: `/${novel.name}/chapters/${volume.name}/${chapter.number}.html`,
+          url: `./${novel.name}/chapters/${volume.name}/${chapter.number}.html`,
           content: chapter.content.substring(0, 200) // 前200字作为预览
         });
       }
