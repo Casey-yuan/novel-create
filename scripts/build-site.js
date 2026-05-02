@@ -193,10 +193,10 @@ function generateIndex(novels) {
     let coverHtml;
     if (novel.cover) {
       if (novel.cover.endsWith('.html')) {
-        // HTML 封面使用 iframe 嵌入显示
-        coverHtml = `<div class="novel-cover html-cover-container"><iframe src="${basePath}/${encodedName}/assets/${novel.cover}" frameborder="0" scrolling="no"></iframe></div>`;
+        // HTML 封面使用 iframe 嵌入显示 - 使用相对路径避免 base 标签影响
+        coverHtml = `<div class="novel-cover html-cover-container"><iframe src="./${encodedName}/assets/${novel.cover}" frameborder="0" scrolling="no"></iframe></div>`;
       } else {
-        coverHtml = `<div class="novel-cover"><img src="${basePath}/${encodedName}/assets/${novel.cover}" alt="${novel.name}"></div>`;
+        coverHtml = `<div class="novel-cover"><img src="./${encodedName}/assets/${novel.cover}" alt="${novel.name}"></div>`;
       }
     } else {
       coverHtml = `<div class="novel-cover placeholder"><span>${novel.name[0]}</span></div>`;

@@ -29,6 +29,12 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-secondary);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 .container {
@@ -66,6 +72,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius);
   transition: background 0.3s;
+  text-align: left;
 }
 
 .site-header .back-link:hover {
