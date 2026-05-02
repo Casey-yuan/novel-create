@@ -7,6 +7,9 @@ const DIST_DIR = path.join(__dirname, '..', 'dist');
 const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
 const ASSETS_DIR = path.join(__dirname, '..', 'assets');
 
+// GitHub Pages 基础路径（仓库名）
+const BASE_PATH = process.env.GITHUB_PAGES_BASE || '';
+
 // 确保目录存在
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -213,7 +216,8 @@ function generateIndex(novels) {
   const html = renderTemplate(template, {
     title: '小说阅读',
     novels: novelsHtml,
-    year: new Date().getFullYear()
+    year: new Date().getFullYear(),
+    basePath: BASE_PATH ? BASE_PATH + '/' : './'
   });
 
   fs.writeFileSync(path.join(DIST_DIR, 'index.html'), html);
@@ -251,7 +255,8 @@ function generateNovelIndex(novel, volumes) {
     description: novel.description || '暂无简介',
     totalChapters: totalChapters,
     totalVolumes: volumes.length,
-    volumes: volumesHtml
+    volumes: volumesHtml,
+    basePath: BASE_PATH ? BASE_PATH + '/' : '../'
   });
 
   const novelDir = path.join(DIST_DIR, novel.name);
@@ -292,14 +297,15 @@ function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, ne
   const html = renderTemplate(template, {
     title: `${chapter.title} - ${novel.name}`,
     novelName: novel.name,
-    novelLink: `../../index.html`,
+    novelLink: `./${novel.name}/index.html`,
     volumeName: volume.name,
     chapterTitle: chapter.title,
     chapterNumber: chapter.number,
     content: contentHtml,
     toc: tocHtml,
     prevLink: prevLink,
-    nextLink: nextLink
+    nextLink: nextLink,
+    basePath: BASE_PATH ? BASE_PATH + '/' : '../../../'
   });
 
   const chapterDir = path.join(DIST_DIR, novel.name, 'chapters', volume.name);
