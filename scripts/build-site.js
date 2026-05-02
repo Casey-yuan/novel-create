@@ -187,15 +187,16 @@ function getNovelChapters(novelPath) {
 function generateIndex(novels) {
   const template = readTemplate('index') || getDefaultIndexTemplate();
 
+  const basePath = BASE_PATH || '';
   const novelsHtml = novels.map(novel => {
     const encodedName = encodeURIComponent(novel.name);
     let coverHtml;
     if (novel.cover) {
       if (novel.cover.endsWith('.html')) {
         // HTML 封面使用 iframe 嵌入显示
-        coverHtml = `<div class="novel-cover html-cover-container"><iframe src="./${encodedName}/assets/${novel.cover}" frameborder="0" scrolling="no"></iframe></div>`;
+        coverHtml = `<div class="novel-cover html-cover-container"><iframe src="${basePath}/${encodedName}/assets/${novel.cover}" frameborder="0" scrolling="no"></iframe></div>`;
       } else {
-        coverHtml = `<div class="novel-cover"><img src="./${encodedName}/assets/${novel.cover}" alt="${novel.name}"></div>`;
+        coverHtml = `<div class="novel-cover"><img src="${basePath}/${encodedName}/assets/${novel.cover}" alt="${novel.name}"></div>`;
       }
     } else {
       coverHtml = `<div class="novel-cover placeholder"><span>${novel.name[0]}</span></div>`;
@@ -203,7 +204,7 @@ function generateIndex(novels) {
 
     return `
       <div class="novel-card">
-        <a href="./${encodedName}/index.html" class="card-link">
+        <a href="${basePath}/${encodedName}/index.html" class="card-link">
           ${coverHtml}
           <div class="novel-info">
             <h3>${novel.name}</h3>
@@ -229,11 +230,12 @@ function generateNovelIndex(novel, volumes) {
   const template = readTemplate('novel-index') || getDefaultNovelIndexTemplate();
 
   const totalChapters = volumes.reduce((sum, v) => sum + v.chapters.length, 0);
+  const encodedNovelName = encodeURIComponent(novel.name);
 
   const volumesHtml = volumes.map(volume => {
     const chaptersHtml = volume.chapters.map(ch => `
       <li>
-        <a href="./chapters/${encodeURIComponent(volume.name)}/${ch.number}.html">
+        <a href="${BASE_PATH}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${ch.number}.html">
           <span class="chapter-num">第${ch.number}章</span>
           <span class="chapter-title">${ch.title}</span>
         </a>
@@ -268,12 +270,14 @@ function generateNovelIndex(novel, volumes) {
 // 生成章节页面
 function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, nextChapter) {
   const template = readTemplate('chapter') || getDefaultChapterTemplate();
+  const encodedNovelName = encodeURIComponent(novel.name);
+  const basePath = BASE_PATH || '';
 
   // 构建目录导航
   const tocHtml = allVolumes.map(v => {
     const chaptersHtml = v.chapters.map(ch => {
       const active = v.name === volume.name && ch.number === chapter.number ? 'active' : '';
-      return `<li class="${active}"><a href="../${encodeURIComponent(v.name)}/${ch.number}.html">第${ch.number}章 ${ch.title}</a></li>`;
+      return `<li class="${active}"><a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(v.name)}/${ch.number}.html">第${ch.number}章 ${ch.title}</a></li>`;
     }).join('');
     return `
       <div class="toc-volume">
@@ -288,17 +292,17 @@ function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, ne
 
   // 导航链接
   const prevLink = prevChapter
-    ? `<a href="${prevChapter.number}.html" class="prev">← 上一章</a>`
+    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${prevChapter.number}.html" class="prev">← 上一章</a>`
     : '<span class="prev disabled">← 上一章</span>';
 
   const nextLink = nextChapter
-    ? `<a href="${nextChapter.number}.html" class="next">下一章 →</a>`
+    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${nextChapter.number}.html" class="next">下一章 →</a>`
     : '<span class="next disabled">下一章</span>';
 
   const html = renderTemplate(template, {
     title: `${chapter.title} - ${novel.name}`,
     novelName: novel.name,
-    novelLink: `./${encodeURIComponent(novel.name)}/index.html`,
+    novelLink: `${basePath}/${encodedNovelName}/index.html`,
     volumeName: volume.name,
     chapterTitle: chapter.title,
     chapterNumber: chapter.number,
@@ -460,14 +464,16 @@ function getDefaultChapterTemplate() {
 // 生成搜索索引
 function generateSearchIndex(novels) {
   const index = [];
+  const basePath = BASE_PATH || '';
   
   for (const novel of novels) {
+    const encodedNovelName = encodeURIComponent(novel.name);
     // 添加小说信息
     index.push({
       type: 'novel',
       title: novel.name,
       description: novel.description,
-      url: `./${novel.name}/index.html`,
+      url: `${basePath}/${encodedNovelName}/index.html`,
       novelName: novel.name
     });
     
@@ -481,7 +487,7 @@ function generateSearchIndex(novels) {
           novelName: novel.name,
           volumeName: volume.name,
           chapterNumber: chapter.number,
-          url: `./${encodeURIComponent(novel.name)}/chapters/${encodeURIComponent(volume.name)}/${chapter.number}.html`,
+          url: `${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${chapter.number}.html`,
           content: chapter.content.substring(0, 200) // 前200字作为预览
         });
       }
