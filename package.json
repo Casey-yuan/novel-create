@@ -1,0 +1,16 @@
+{
+  "name": "novel-site",
+  "version": "1.0.0",
+  "description": "小说阅读站点生成器",
+  "main": "scripts/build-site.js",
+  "scripts": {
+    "build": "node scripts/build-site.js",
+    "dev": "node scripts/build-site.js && npx serve dist"
+  },
+  "keywords": ["novel", "markdown", "static-site"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^12.0.0"
+  }
+}

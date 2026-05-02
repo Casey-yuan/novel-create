@@ -1,0 +1,230 @@
+# 小说风格配置
+# 定义不同题材和风格的创作参数
+
+styles:
+  # 玄幻风格
+  玄幻:
+    name: "东方玄幻"
+    description: "气势恢宏，等级森严，战斗热血"
+    characteristics:
+      - "世界观宏大"
+      - "力量体系明确"
+      - "战斗场面激烈"
+      - "升级爽感强烈"
+    rhythm:
+      small_climax: "1-2章"
+      medium_climax: "3-5章"
+      big_climax: "8-12章"
+      volume_climax: "15-20章"
+    word_count:
+      per_chapter: "2500-3500"
+      total_estimate: "300-500章"
+    tags: ["热血", "升级", "战斗", "爽文"]
+    
+  # 修仙风格
+  修仙:
+    name: "古典修仙"
+    description: "仙气飘渺，道法自然，心性修炼"
+    characteristics:
+      - "修炼体系完整"
+      - "心性成长并重"
+      - "法宝功法丰富"
+      - "长生追求主题"
+    rhythm:
+      small_climax: "2-3章"
+      medium_climax: "5-8章"
+      big_climax: "12-18章"
+      volume_climax: "20-30章"
+    word_count:
+      per_chapter: "2000-3000"
+      total_estimate: "500-1000章"
+    tags: ["修仙", "长生", "法宝", "境界"]
+    
+  # 都市风格
+  都市:
+    name: "都市异能"
+    description: "现代背景，贴近生活，职场规则"
+    characteristics:
+      - "现代语言风格"
+      - "贴近现实生活"
+      - "职场商战元素"
+      - "情感线细腻"
+    rhythm:
+      small_climax: "1-2章"
+      medium_climax: "3-4章"
+      big_climax: "6-10章"
+      volume_climax: "12-18章"
+    word_count:
+      per_chapter: "2000-2500"
+      total_estimate: "200-500章"
+    tags: ["都市", "异能", "职场", "逆袭"]
+    
+  # 科幻风格
+  科幻:
+    name: "星际科幻"
+    description: "逻辑严密，设定详细，科技感强"
+    characteristics:
+      - "科学设定合理"
+      - "技术细节丰富"
+      - "未来社会描绘"
+      - "思想深度"
+    rhythm:
+      small_climax: "2-3章"
+      medium_climax: "5-8章"
+      big_climax: "12-20章"
+      volume_climax: "25-35章"
+    word_count:
+      per_chapter: "2500-3500"
+      total_estimate: "200-400章"
+    tags: ["科幻", "星际", "未来", "技术"]
+    
+  # 悬疑风格
+  悬疑:
+    name: "侦探推理"
+    description: "节奏紧凑，悬念迭起，逻辑严密"
+    characteristics:
+      - "悬念设置巧妙"
+      - "逻辑推理严密"
+      - "节奏紧凑快速"
+      - "反转出人意料"
+    rhythm:
+      small_climax: "每章"
+      medium_climax: "3-5章"
+      big_climax: "8-12章"
+      volume_climax: "15-20章"
+    word_count:
+      per_chapter: "1500-2500"
+      total_estimate: "100-300章"
+    tags: ["悬疑", "推理", "侦探", "烧脑"]
+    
+  # 言情风格
+  言情:
+    name: "现代言情"
+    description: "情感细腻，心理描写，甜蜜温馨"
+    characteristics:
+      - "情感细腻真实"
+      - "心理描写丰富"
+      - "感情发展自然"
+      - "甜蜜与波折并存"
+    rhythm:
+      small_climax: "2-3章"
+      medium_climax: "5-8章"
+      big_climax: "12-18章"
+      volume_climax: "20-30章"
+    word_count:
+      per_chapter: "2000-3000"
+      total_estimate: "100-200章"
+    tags: ["言情", "甜宠", "虐恋", "感情"]
+    
+  # 历史风格
+  历史:
+    name: "架空历史"
+    description: "历史背景，权谋斗争，争霸天下"
+    characteristics:
+      - "历史背景详实"
+      - "权谋斗争复杂"
+      - "人物关系错综"
+      - "格局宏大"
+    rhythm:
+      small_climax: "2-4章"
+      medium_climax: "6-10章"
+      big_climax: "15-25章"
+      volume_climax: "30-50章"
+    word_count:
+      per_chapter: "2500-3500"
+      total_estimate: "300-800章"
+    tags: ["历史", "权谋", "争霸", "朝堂"]
+
+# 子类型配置
+sub_styles:
+  系统流:
+    parent: "都市/玄幻/修仙"
+    features:
+      - "系统金手指"
+      - "任务奖励机制"
+      - "属性面板"
+      - "升级可视化"
+      
+  重生流:
+    parent: "都市/言情/历史"
+    features:
+      - "重生回到过去"
+      - "先知优势"
+      - "弥补遗憾"
+      - "改变命运"
+      
+  穿越流:
+    parent: "历史/玄幻/修仙"
+    features:
+      - "穿越到异世界"
+      - "现代知识优势"
+      - "文化冲突"
+      - "适应与改变"
+      
+  种田流:
+    parent: "历史/玄幻/科幻"
+    features:
+      - "基建发展"
+      - "经营养成"
+      - "慢节奏"
+      - "成就感"
+      
+  无限流:
+    parent: "科幻/玄幻"
+    features:
+      - "诸天万界"
+      - "副本任务"
+      - "能力获取"
+      - "生存挑战"
+
+# 风格标签
+tags:
+  爽文:
+    description: "打脸、装逼、碾压、无敌"
+    elements: ["打脸", "装逼", "碾压", "无敌", "升级快"]
+    
+  虐文:
+    description: "虐心、虐身、虐恋情深"
+    elements: ["虐心", "虐身", "误会", "分离", "牺牲"]
+    
+  甜文:
+    description: "甜宠、狗粮、温馨日常"
+    elements: ["甜宠", "狗粮", "温馨", "日常", "治愈"]
+    
+  黑暗:
+    description: "杀伐果断、黑暗流、反派主角"
+    elements: ["杀伐", "黑暗", "反派", "冷酷", "无情"]
+    
+  轻松:
+    description: "搞笑、幽默、轻松日常"
+    elements: ["搞笑", "幽默", "轻松", "吐槽", "欢乐"]
+    
+  正剧:
+    description: "严肃、写实、深度思考"
+    elements: ["严肃", "写实", "深度", "沉重", "思考"]
+
+# 创作模式
+modes:
+  标准创作:
+    description: "常规章节创作"
+    process: ["读取规划", "读取记忆", "创作", "自检", "输出"]
+    
+  续写创作:
+    description: "已有前文，继续创作"
+    process: ["读取前文", "分析状态", "承接创作", "保持连贯", "输出"]
+    
+  仿写创作:
+    description: "仿写特定风格/作者"
+    process: ["分析风格", "提取特征", "按风格创作", "保持原创", "输出"]
+    
+  改写创作:
+    description: "改写已有内容"
+    process: ["读取原文", "分析要求", "保留核心", "改写表达", "输出"]
+    
+  番外创作:
+    description: "创作番外篇"
+    process: ["确定时间点", "选择角色", "设计情节", "保持人设", "输出"]
+    
+  同人创作:
+    description: "基于原作创作同人"
+    process: ["分析原作", "确定切入点", "设计差异", "规避版权", "输出"]

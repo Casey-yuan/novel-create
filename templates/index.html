@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>{{title}}</h1>
+      <p class="subtitle">精彩小说在线阅读</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="search-section">
+      <input type="text" id="searchInput" placeholder="搜索小说或章节..." class="search-input">
+    </div>
+    <div class="novels-grid" id="novelsGrid">
+      {{novels}}
+    </div>
+    <div id="searchResults" class="search-results" style="display: none;">
+      <h2>搜索结果</h2>
+      <div id="resultsList"></div>
+    </div>
+  </main>
+  <script src="./assets/js/search.js"></script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{year}} 小说阅读. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

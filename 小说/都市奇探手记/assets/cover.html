@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都市奇探手记 - 封面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+        }
+        
+        .cover-container {
+            position: relative;
+            width: 600px;
+            height: 800px;
+            background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        /* 背景装饰 */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
+        }
+        
+        /* 城市剪影 */
+        .city-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+        }
+        
+        .city-silhouette::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200'%3E%3Cpath fill='%23000' d='M0,200 L0,150 L50,150 L50,100 L100,100 L100,120 L150,120 L150,80 L200,80 L200,140 L250,140 L250,60 L300,60 L300,130 L350,130 L350,90 L400,90 L400,150 L450,150 L450,70 L500,70 L500,120 L550,120 L550,100 L600,100 L600,140 L650,140 L650,80 L700,80 L700,130 L750,130 L750,110 L800,110 L800,150 L850,150 L850,60 L900,60 L900,140 L950,140 L950,90 L1000,90 L1000,120 L1050,120 L1050,100 L1100,100 L1100,150 L1150,150 L1150,130 L1200,130 L1200,200 Z'/%3E%3C/svg%3E") repeat-x;
+            background-size: 600px 200px;
+        }
+        
+        /* 侦探剪影 */
+        .detective {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 350px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #000 100%);
+            clip-path: polygon(30% 0%, 70% 0%, 80% 30%, 75% 100%, 25% 100%, 20% 30%);
+            opacity: 0.8;
+        }
+        
+        .detective::before {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(100, 200, 255, 0.3);
+        }
+        
+        /* 放大镜装饰 */
+        .magnifier {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            border: 4px solid rgba(100, 200, 255, 0.6);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .magnifier::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -10px;
+            width: 40px;
+            height: 8px;
+            background: rgba(100, 200, 255, 0.6);
+            transform: rotate(45deg);
+            border-radius: 4px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        /* 标题区域 */
+        .title-section {
+            position: absolute;
+            top: 8%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .main-title {
+            font-size: 72px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 
+                0 0 10px rgba(100, 200, 255, 0.8),
+                0 0 20px rgba(100, 200, 255, 0.5),
+                0 0 30px rgba(100, 200, 255, 0.3);
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .sub-title {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* 装饰线 */
+        .decoration-line {
+            position: absolute;
+            top: 28%;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(100, 200, 255, 0.8), transparent);
+        }
+        
+        /* 标签 */
+        .tags {
+            position: absolute;
+            top: 32%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .tag {
+            padding: 6px 16px;
+            background: rgba(100, 200, 255, 0.2);
+            border: 1px solid rgba(100, 200, 255, 0.5);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        /* 简介 */
+        .intro {
+            position: absolute;
+            top: 42%;
+            left: 10%;
+            width: 80%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.8;
+            letter-spacing: 2px;
+        }
+        
+        /* 作者信息 */
+        .author-section {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            letter-spacing: 4px;
+        }
+        
+        /* 光效 */
+        .light-effect {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 下载按钮 */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* 提示文字 */
+        .hint {
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container" id="cover">
+        <div class="light-effect"></div>
+        <div class="bg-pattern"></div>
+        <div class="city-silhouette"></div>
+        <div class="detective"></div>
+        <div class="magnifier"></div>
+        
+        <div class="title-section">
+            <h1 class="main-title">都市奇探手记</h1>
+            <p class="sub-title">URBAN DETECTIVE NOTES</p>
+        </div>
+        
+        <div class="decoration-line"></div>
+        
+        <div class="tags">
+            <span class="tag">刑侦悬疑</span>
+            <span class="tag">轻松推理</span>
+            <span class="tag">单元剧</span>
+        </div>
+        
+        <div class="intro">
+            密室疑云 · 消失的她 · 毒宴谜案 · 连环盗窃<br>
+            跟随奇探陆铭，揭开都市背后的真相
+        </div>
+        
+        <div class="author-section">
+            故事販賣機 作品
+        </div>
+    </div>
+    
+    <p class="hint">右键点击图片可保存封面</p>
+    <button class="download-btn" onclick="downloadCover()">下载封面</button>
+    
+    <script>
+        function downloadCover() {
+            const cover = document.getElementById('cover');
+            
+            // 使用html2canvas或类似库来生成图片
+            // 这里提供一个简单的提示
+            alert('保存封面方法：\n1. 在封面图片上点击右键\n2. 选择"图片另存为"\n3. 选择保存位置即可');
+        }
+        
+        // 添加鼠标悬停效果
+        document.querySelector('.cover-container').addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        document.querySelector('.cover-container').addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    </script>
+</body>
+</html>

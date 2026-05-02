@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body class="reading-mode">
+  <header class="chapter-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="{{novelLink}}">{{novelName}}</a>
+        <span>/</span>
+        <span>{{volumeName}}</span>
+      </nav>
+      <h1>第{{chapterNumber}}章 {{chapterTitle}}</h1>
+    </div>
+  </header>
+
+  <div class="reading-container">
+    <aside class="toc-sidebar">
+      <div class="toc-header">
+        <h3>目录</h3>
+        <button class="toc-toggle" onclick="toggleToc()">☰</button>
+      </div>
+      <div class="toc-content">
+        {{toc}}
+      </div>
+    </aside>
+
+    <main class="chapter-content">
+      <article>
+        {{content}}
+      </article>
+
+      <nav class="chapter-nav">
+        {{prevLink}}
+        <a href="{{novelLink}}" class="toc">目录</a>
+        {{nextLink}}
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 小说阅读</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleToc() {
+      document.querySelector('.toc-sidebar').classList.toggle('collapsed');
+      document.querySelector('.chapter-content').classList.toggle('expanded');
+    }
+
+    // 记住目录折叠状态
+    if (localStorage.getItem('toc-collapsed') === 'true') {
+      document.querySelector('.toc-sidebar').classList.add('collapsed');
+      document.querySelector('.chapter-content').classList.add('expanded');
+    }
+
+    document.querySelector('.toc-toggle').addEventListener('click', function() {
+      const isCollapsed = document.querySelector('.toc-sidebar').classList.contains('collapsed');
+      localStorage.setItem('toc-collapsed', isCollapsed);
+    });
+  </script>
+</body>
+</html>
