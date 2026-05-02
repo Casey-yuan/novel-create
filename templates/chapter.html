@@ -5,39 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <base href="{{basePath}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body class="reading-mode">
-  <header class="chapter-header">
+<body>
+  <header class="site-header">
     <div class="container">
-      <nav class="breadcrumb">
-        <a href="{{novelLink}}">{{novelName}}</a>
-        <span>/</span>
-        <span>{{volumeName}}</span>
-      </nav>
-      <h1>第{{chapterNumber}}章 {{chapterTitle}}</h1>
+      <a href="{{novelLink}}" class="back-link">返回目录</a>
+      <h1>{{novelName}}</h1>
     </div>
   </header>
 
-  <div class="reading-container">
+  <div class="reading-layout">
     <aside class="toc-sidebar">
-      <div class="toc-header">
-        <h3>目录</h3>
-        <button class="toc-toggle" onclick="toggleToc()">☰</button>
-      </div>
-      <div class="toc-content">
+      <div class="toc-title">目录</div>
+      <ul class="toc-list">
         {{toc}}
-      </div>
+      </ul>
     </aside>
 
-    <main class="chapter-content">
-      <article>
+    <main class="chapter-reading">
+      <nav class="breadcrumb">
+        <a href="./index.html">首页</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="{{novelLink}}">{{novelName}}</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>{{volumeName}}</span>
+      </nav>
+
+      <h1 class="chapter-header-title">第{{chapterNumber}}章 {{chapterTitle}}</h1>
+
+      <article class="chapter-body">
         {{content}}
       </article>
 
       <nav class="chapter-nav">
         {{prevLink}}
-        <a href="{{novelLink}}" class="toc">目录</a>
         {{nextLink}}
       </nav>
     </main>
@@ -48,23 +53,5 @@
       <p>&copy; 小说阅读</p>
     </div>
   </footer>
-
-  <script>
-    function toggleToc() {
-      document.querySelector('.toc-sidebar').classList.toggle('collapsed');
-      document.querySelector('.chapter-content').classList.toggle('expanded');
-    }
-
-    // 记住目录折叠状态
-    if (localStorage.getItem('toc-collapsed') === 'true') {
-      document.querySelector('.toc-sidebar').classList.add('collapsed');
-      document.querySelector('.chapter-content').classList.add('expanded');
-    }
-
-    document.querySelector('.toc-toggle').addEventListener('click', function() {
-      const isCollapsed = document.querySelector('.toc-sidebar').classList.contains('collapsed');
-      localStorage.setItem('toc-collapsed', isCollapsed);
-    });
-  </script>
 </body>
 </html>

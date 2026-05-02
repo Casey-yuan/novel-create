@@ -5,34 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <base href="{{basePath}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>{{title}}</h1>
-      <p class="subtitle">精彩小说在线阅读</p>
+      <h1><a href="./">{{title}}</a></h1>
     </div>
   </header>
 
-  <main class="container">
-    <div class="search-section">
-      <input type="text" id="searchInput" placeholder="搜索小说或章节..." class="search-input">
-    </div>
-    <div class="novels-grid" id="novelsGrid">
-      {{novels}}
-    </div>
-    <div id="searchResults" class="search-results" style="display: none;">
-      <h2>搜索结果</h2>
-      <div id="resultsList"></div>
+  <main>
+    <div class="container">
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="搜索小说或章节..." class="search-input">
+      </div>
+      <div class="novels-grid" id="novelsGrid">
+        {{novels}}
+      </div>
+      <div id="searchResults" class="search-results" style="display: none;">
+        <h2>搜索结果</h2>
+        <div id="resultsList"></div>
+      </div>
     </div>
   </main>
-  <script src="./assets/js/search.js"></script>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; {{year}} 小说阅读. All rights reserved.</p>
+      <p>&copy; {{year}} 小说阅读</p>
     </div>
   </footer>
+
+  <script src="./assets/js/search.js"></script>
 </body>
 </html>

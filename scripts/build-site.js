@@ -244,7 +244,7 @@ function generateNovelIndex(novel, volumes) {
 
     return `
       <div class="volume">
-        <h3>${volume.name}</h3>
+        <h3 class="volume-title">${volume.name}</h3>
         <ul class="chapter-list">
           ${chaptersHtml}
         </ul>
@@ -275,16 +275,10 @@ function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, ne
 
   // 构建目录导航
   const tocHtml = allVolumes.map(v => {
-    const chaptersHtml = v.chapters.map(ch => {
+    return v.chapters.map(ch => {
       const active = v.name === volume.name && ch.number === chapter.number ? 'active' : '';
-      return `<li class="${active}"><a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(v.name)}/${ch.number}.html">第${ch.number}章 ${ch.title}</a></li>`;
+      return `<li><a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(v.name)}/${ch.number}.html" class="${active}">第${ch.number}章 ${ch.title}</a></li>`;
     }).join('');
-    return `
-      <div class="toc-volume">
-        <h4>${v.name}</h4>
-        <ul>${chaptersHtml}</ul>
-      </div>
-    `;
   }).join('');
 
   // 转换 Markdown 为 HTML
@@ -292,11 +286,11 @@ function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, ne
 
   // 导航链接
   const prevLink = prevChapter
-    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${prevChapter.number}.html" class="prev">← 上一章</a>`
-    : '<span class="prev disabled">← 上一章</span>';
+    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(prevChapter.volumeName || volume.name)}/${prevChapter.number}.html" class="prev">上一章</a>`
+    : '<span class="prev disabled">上一章</span>';
 
   const nextLink = nextChapter
-    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${nextChapter.number}.html" class="next">下一章 →</a>`
+    ? `<a href="${basePath}/${encodedNovelName}/chapters/${encodeURIComponent(nextChapter.volumeName || volume.name)}/${nextChapter.number}.html" class="next">下一章</a>`
     : '<span class="next disabled">下一章</span>';
 
   const html = renderTemplate(template, {
@@ -547,8 +541,24 @@ function main() {
 
       for (let j = 0; j < volume.chapters.length; j++) {
         const chapter = volume.chapters[j];
-        const prevChapter = j > 0 ? volume.chapters[j - 1] : null;
-        const nextChapter = j < volume.chapters.length - 1 ? volume.chapters[j + 1] : null;
+        
+        // 获取上一章（可能是上一卷的最后一个章节）
+        let prevChapter = null;
+        if (j > 0) {
+          prevChapter = { ...volume.chapters[j - 1], volumeName: volume.name };
+        } else if (i > 0) {
+          const prevVolume = volumes[i - 1];
+          prevChapter = { ...prevVolume.chapters[prevVolume.chapters.length - 1], volumeName: prevVolume.name };
+        }
+        
+        // 获取下一章（可能是下一卷的第一个章节）
+        let nextChapter = null;
+        if (j < volume.chapters.length - 1) {
+          nextChapter = { ...volume.chapters[j + 1], volumeName: volume.name };
+        } else if (i < volumes.length - 1) {
+          const nextVolume = volumes[i + 1];
+          nextChapter = { ...nextVolume.chapters[0], volumeName: nextVolume.name };
+        }
 
         generateChapterPage(novel, volume, chapter, volumes, prevChapter, nextChapter);
       }

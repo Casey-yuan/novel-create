@@ -5,34 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <base href="{{basePath}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="./index.html" class="back-link">← 返回首页</a>
+      <a href="./index.html" class="back-link">返回首页</a>
       <h1>{{novelName}}</h1>
     </div>
   </header>
 
-  <main class="container">
-    <div class="novel-info-card">
-      <h2>{{novelName}}</h2>
-      <p class="description">{{description}}</p>
-      <div class="stats">
-        <span class="stat-item">
-          <strong>{{totalVolumes}}</strong>
-          <small>卷</small>
-        </span>
-        <span class="stat-item">
-          <strong>{{totalChapters}}</strong>
-          <small>章</small>
-        </span>
+  <main>
+    <div class="container">
+      <div class="novel-detail-header">
+        <h2>{{novelName}}</h2>
+        <p class="novel-meta">{{totalVolumes}} 卷 · {{totalChapters}} 章</p>
       </div>
-    </div>
 
-    <div class="volumes-container">
-      {{volumes}}
+      <div class="volumes-container">
+        {{volumes}}
+      </div>
     </div>
   </main>
 
