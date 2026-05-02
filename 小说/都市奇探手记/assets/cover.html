@@ -282,18 +282,7 @@
         </div>
     </div>
     
-    <p class="hint">右键点击图片可保存封面</p>
-    <button class="download-btn" onclick="downloadCover()">下载封面</button>
-    
     <script>
-        function downloadCover() {
-            const cover = document.getElementById('cover');
-            
-            // 使用html2canvas或类似库来生成图片
-            // 这里提供一个简单的提示
-            alert('保存封面方法：\n1. 在封面图片上点击右键\n2. 选择"图片另存为"\n3. 选择保存位置即可');
-        }
-        
         // 添加鼠标悬停效果
         document.querySelector('.cover-container').addEventListener('mousemove', function(e) {
             const rect = this.getBoundingClientRect();
