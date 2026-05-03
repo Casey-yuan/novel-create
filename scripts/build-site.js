@@ -235,7 +235,7 @@ function generateNovelIndex(novel, volumes) {
   const volumesHtml = volumes.map(volume => {
     const chaptersHtml = volume.chapters.map(ch => `
       <li>
-        <a href="${BASE_PATH}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${ch.number}.html">
+        <a href="${BASE_PATH}/${encodedNovelName}/chapters/${encodeURIComponent(volume.name)}/${ch.number}.html" title="${ch.title}">
           <span class="chapter-num">第${ch.number}章</span>
           <span class="chapter-title">${ch.title}</span>
         </a>
