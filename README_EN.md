@@ -174,6 +174,42 @@ Edit `assets/css/style.css` to modify theme colors, fonts, etc.
 
 MIT License
 
+## 📦 Skill Export and Reuse
+
+The Fiction Crafter skill can be **exported and used in other Agent/environments**:
+
+### Export Methods
+
+**Method 1: Direct Copy**
+```bash
+# Copy skill directory to target project
+cp -r .trae/skills/fiction-crafter /target-project/.trae/skills/
+```
+
+**Method 2: Git Submodule**
+```bash
+git submodule add https://github.com/Casey-yuan/novel-create.git
+```
+
+**Method 3: Standalone Repository**
+```bash
+# Extract skill as standalone repository
+git subtree split --prefix=.trae/skills/fiction-crafter -b fiction-crafter-skill
+git push https://github.com/yourname/fiction-crafter-skill.git fiction-crafter-skill:main
+```
+
+### Using in Other Environments
+
+- **Trae IDE**: Copy to `.trae/skills/fiction-crafter/` for auto-recognition
+- **Other AI Agents**: Use Agent definitions in `agents/` as prompt templates
+- **Standalone CLI**: Develop Node.js/Python CLI tools based on SKILL.md architecture
+
+### Notes
+
+- `.learnings/` contains project-specific memories, can be excluded during export
+- Scripts in the skill may need path adjustments
+- The skill itself doesn't include API call code, implement LLM calling layer externally
+
 ## 🤝 Contributing
 
 Issues and Pull Requests are welcome!

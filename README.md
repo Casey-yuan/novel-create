@@ -174,6 +174,42 @@ title: '你的小说网站名称'
 
 MIT License
 
+## 📦 技能导出与复用
+
+Fiction Crafter 技能可以**单独导出并在其他 Agent/环境使用**：
+
+### 导出方式
+
+**方式一：直接复制**
+```bash
+# 复制技能目录到目标项目
+cp -r .trae/skills/fiction-crafter /目标项目/.trae/skills/
+```
+
+**方式二：Git 子模块**
+```bash
+git submodule add https://github.com/Casey-yuan/novel-create.git
+```
+
+**方式三：独立仓库**
+```bash
+# 提取技能为独立仓库
+git subtree split --prefix=.trae/skills/fiction-crafter -b fiction-crafter-skill
+git push https://github.com/yourname/fiction-crafter-skill.git fiction-crafter-skill:main
+```
+
+### 在其他环境使用
+
+- **Trae IDE**: 复制到 `.trae/skills/fiction-crafter/` 自动识别
+- **其他 AI Agent**: 直接使用 `agents/` 下的 Agent 定义作为提示词模板
+- **独立 CLI**: 基于 SKILL.md 架构开发 Node.js/Python CLI 工具
+
+### 注意事项
+
+- `.learnings/` 包含项目特定记忆，导出时可选择性排除
+- 技能中的脚本可能需要调整路径
+- 技能本身不包含 API 调用代码，需在外部实现 LLM 调用层
+
 ## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request！
