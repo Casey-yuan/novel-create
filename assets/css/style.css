@@ -9,41 +9,63 @@
   box-sizing: border-box;
 }
 
-/* 色彩系统 - 纸墨风格 */
+/* 色彩系统 - 纸墨风格（浅色模式） */
 :root {
   /* 主色 */
   --ink: #1a1a1a;
   --ink-light: #4a4a4a;
   --ink-muted: #8a8a8a;
-  
+
   /* 纸张色 */
   --paper: #faf9f7;
   --paper-warm: #f5f3f0;
   --paper-cool: #f0eeeb;
-  
+
   /* 强调色 */
   --accent: #c9a227;
   --accent-hover: #b08d1f;
-  
+
   /* 功能色 */
   --border: #e5e3e0;
   --shadow: rgba(0, 0, 0, 0.06);
   --shadow-hover: rgba(0, 0, 0, 0.1);
-  
+
   /* 排版 */
   --font-serif: "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
   --font-sans: "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-  
+
   /* 间距 */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2.5rem;
   --space-xl: 4rem;
-  
+
   /* 圆角 */
   --radius: 4px;
   --radius-lg: 8px;
+}
+
+/* 深色模式 */
+[data-theme="dark"] {
+  /* 主色 */
+  --ink: #e8e6e3;
+  --ink-light: #b8b4af;
+  --ink-muted: #888480;
+
+  /* 纸张色 */
+  --paper: #1a1a1a;
+  --paper-warm: #252422;
+  --paper-cool: #2a2826;
+
+  /* 强调色 */
+  --accent: #d4a72e;
+  --accent-hover: #e0b53a;
+
+  /* 功能色 */
+  --border: #3a3836;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.4);
 }
 
 /* 基础样式 */
@@ -126,6 +148,25 @@ main {
 .back-link::before {
   content: "←";
   font-size: 1rem;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--ink-light);
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-muted);
+  background: var(--paper-warm);
 }
 
 /* ============================================
