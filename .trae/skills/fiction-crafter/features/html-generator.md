@@ -7,10 +7,36 @@
 ## 封面图 HTML 生成
 
 ### 生成要求
-- 必须生成与小说内容相关的封面设计
+- **必须**生成与小说内容**紧密相关**的封面设计，视觉元素要体现小说核心主题
 - 使用 HTML + CSS 实现，便于下载和自定义
+- **必须**询问用户作者名，**禁止**使用"AI创作"等默认作者名
 - 包含小说标题、作者、视觉元素
 - 响应式设计，支持不同尺寸
+- **禁止**显示下载按钮，用户可自行截图保存
+
+### 封面设计原则
+
+#### 1. 视觉吸引力
+- 使用醒目的配色方案，符合题材风格
+- 标题字体要大且有冲击力
+- 添加符合主题的视觉符号或装饰元素
+- 整体布局要平衡，有层次感
+
+#### 2. 紧贴小说主题
+- **视觉元素必须与小说核心设定相关**
+  - 修仙：飞剑、丹药、符文、灵气、山脉
+  - 玄幻：龙、魔法阵、神器、异兽
+  - 都市：摩天大楼、霓虹灯、现代符号
+  - 科幻：飞船、星球、科技元素、未来感
+  - 历史：古代建筑、兵器、服饰元素
+- 配色要符合小说基调（热血/暗黑/轻松/悬疑）
+- 可以添加与主角能力或关键道具相关的符号
+
+#### 3. 信息层次
+- 主标题：最醒目，字体最大
+- 副标题/卖点：一句话概括小说亮点
+- 作者名：询问用户后填入，**禁止默认"AI创作"**
+- 题材标签：3-5个关键词标签
 
 ### 封面 HTML 模板
 
@@ -127,19 +153,22 @@
             opacity: 0.8;
         }
         
-        /* 作者信息 */
+        /* 作者信息 - 必须询问用户 */
         .author {
-            font-size: 20px;
-            color: #aaa;
+            font-size: 24px;
+            color: #ffd700;
             text-align: center;
             z-index: 1;
             margin-top: 40px;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
         
         .author-label {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
+            color: #888;
+            margin-bottom: 8px;
+            letter-spacing: 4px;
         }
         
         /* 标签 */
@@ -159,34 +188,10 @@
             color: #e94560;
         }
         
-        /* 下载按钮 */
-        .download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 15px 30px;
-            background: #e94560;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
-        }
-        
         /* 打印样式 */
         @media print {
             body {
                 background: white;
-            }
-            .download-btn {
-                display: none;
             }
         }
     </style>
@@ -202,7 +207,7 @@
         
         <div class="author">
             <div class="author-label">作者</div>
-            <div>[作者名]</div>
+            <div>[询问用户后填入]</div>
         </div>
         
         <div class="tags">
@@ -213,24 +218,6 @@
         
         <div class="decoration-line bottom"></div>
     </div>
-    
-    <button class="download-btn" onclick="downloadCover()">下载封面</button>
-    
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script>
-        function downloadCover() {
-            const cover = document.querySelector('.cover-container');
-            html2canvas(cover, {
-                scale: 2,
-                backgroundColor: null
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = '[小说名]_封面.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-    </script>
 </body>
 </html>
 ```
@@ -327,9 +314,105 @@
 }
 ```
 
+### 封面生成流程
+
+```
+大纲确认后
+    ↓
+【必须】询问用户作者名
+    → "请提供作者名（用于封面展示）："
+    → 【禁止】使用"AI创作"等默认名
+    ↓
+分析小说核心主题
+    → 主角能力/关键道具/核心冲突
+    → 确定视觉元素（如：飞剑、系统面板、神兽等）
+    ↓
+选择题材配色方案
+    → 修仙：青蓝+金色
+    → 玄幻：紫黑+金色
+    → 都市：深蓝+霓虹粉
+    → 科幻：深空蓝+科技青
+    ↓
+生成封面 HTML
+    → 600x800px 标准尺寸
+    → 主题相关的视觉符号
+    → 醒目的标题设计
+    → 用户提供的作者名
+    → 【禁止】下载按钮
+    ↓
+保存到 assets/cover.html
+    ↓
+展示给用户
+    → 用户可自行截图保存
+```
+
 ---
 
 ## 推广推文 HTML 生成
+
+### 推文生成要求
+
+#### 1. 结合整体小说大纲
+- **必须**阅读 `outline/全局大纲.md` 和 `outline/全卷规划总览.md`
+- 推文内容要体现小说的**核心卖点**和**主线剧情**
+- 突出**主角特色**（能力、性格、成长轨迹）
+- 体现**核心冲突**（主要矛盾、对手、目标）
+- 展示**独特设定**（金手指、世界观、创新点）
+
+#### 2. 推文吸引力原则
+- **悬念型**：设置悬念，引发好奇（"当XXX发生时，所有人都惊呆了..."）
+- **爽点型**：直接展示爽点（"开局XXX，直接无敌！"）
+- **情感型**：触动情感共鸣（"从废物到巅峰，他只用了XXX天..."）
+- **设定型**：突出独特设定（"这是一个XXX的世界，主角却..."）
+- **对比型**：强烈反差（"别人XXX，他却XXX"）
+
+#### 3. 推文内容规范
+- 每条推文 50-150 字，适合社交媒体传播
+- 包含 3-5 个相关话题标签（#XXX #XXX）
+- 语言简洁有力，避免冗长
+- 突出小说最吸引人的点
+- **禁止**脱离小说实际内容，禁止夸大或虚假宣传
+
+#### 4. 推文类型分配
+- 1条 **悬念型** - 设置核心悬念
+- 1条 **爽点型** - 展示核心爽点
+- 1条 **设定型** - 介绍独特设定
+- 1条 **情感型** - 触动读者情感
+- 1条 **综合型** - 综合展示亮点
+
+### 推文生成流程
+
+```
+大纲确认后
+    ↓
+读取全局大纲
+    → 核心卖点
+    → 主线剧情
+    → 主角特色
+    → 核心冲突
+    → 独特设定
+    ↓
+读取全卷规划总览
+    → 主角成长线
+    → 关键剧情节点
+    → 爽点分布
+    ↓
+生成5条推文
+    → 悬念型（结合核心冲突）
+    → 爽点型（结合主角能力）
+    → 设定型（结合世界观）
+    → 情感型（结合成长轨迹）
+    → 综合型（综合亮点）
+    ↓
+检查推文质量
+    → 是否贴合大纲？
+    → 是否有吸引力？
+    → 是否脱离主题？
+    ↓
+保存到 assets/tweets.html
+    ↓
+展示给用户
+```
 
 ### 推文展示页面
 

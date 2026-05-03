@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《逐出宗门：我激活了万古大帝传承》推广推文</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a52 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #87ceeb;
+            font-size: 16px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+        
+        .tweet-card {
+            background: linear-gradient(145deg, #1a2a3e 0%, #0d1b2a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(135,206,235,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .tweet-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,215,0,0.3);
+        }
+        
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .tweet-type {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #0a1628;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .tweet-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #87ceeb;
+        }
+        
+        .tweet-content {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #e0e1dd;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .tweet-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .tweet-tag {
+            background: rgba(135,206,235,0.15);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #87ceeb;
+            border: 1px solid rgba(135,206,235,0.3);
+        }
+        
+        .tweet-platforms {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .platform {
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 13px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .platform.weibo { background: #e6162d; }
+        .platform.xiaohongshu { background: #ff2442; }
+        .platform.douyin { background: #000; }
+        .platform.zhihu { background: #0084ff; }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            color: #0a1628;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+        }
+        
+        .download-all {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            letter-spacing: 3px;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,215,0,0.95);
+            color: #0a1628;
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .author-info {
+            text-align: center;
+            color: #778da9;
+            font-size: 14px;
+            margin-top: 30px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>《逐出宗门：我激活了万古大帝传承》</h1>
+        <p class="subtitle">推广推文素材库</p>
+        
+        <!-- 推文1：悬念型 -->
+        <div class="tweet-card">
+            <div class="tweet-header">
+                <span class="tweet-type">悬念型</span>
+                <span class="tweet-title">引发好奇</span>
+            </div>
+            <div class="tweet-content" id="tweet1">
+🔥 被逐宗门的那一日，所有人都以为他完了。
+
+修为被废，扔下山门，连野狗都敢欺辱他。
+
+但没人知道——
+
+就在濒死之际，一道金光从天而降，
+十万年前的万古大帝传承在他体内觉醒！
+
+《万古帝经》、帝器万古剑、大帝记忆...
+
+三年后，他强势回归，让整个青云宗跪地求饶！
+
+📖 《逐出宗门：我激活了万古大帝传承》
+
+👇 点击阅读，看他如何逆天改命！
+            </div>
+            <div class="tweet-tags">
+                <span class="tweet-tag">#修仙爽文</span>
+                <span class="tweet-tag">#大帝传承</span>
+                <span class="tweet-tag">#逆袭打脸</span>
+                <span class="tweet-tag">#万古帝尊</span>
+            </div>
+            <div class="tweet-platforms">
+                <span class="platform weibo">微博</span>
+                <span class="platform douyin">抖音</span>
+            </div>
+            <button class="copy-btn" onclick="copyTweet('tweet1')">复制推文</button>
+        </div>
+        
+        <!-- 推文2：爽点型 -->
+        <div class="tweet-card">
+            <div class="tweet-header">
+                <span class="tweet-type">爽点型</span>
+                <span class="tweet-title">突出爽文</span>
+            </div>
+            <div class="tweet-content" id="tweet2">
+⚡ 爽到炸裂！这本修仙文让我熬夜看完！
+
+✅ 开局被逐，绝境激活万古大帝传承
+✅ 一天突破六层，修炼速度逆天
+✅ 一招击败仇人，首次打脸超爽
+✅ 强势回归，让整个宗门震惊
+✅ 三年成就大帝，九九雷劫渡劫
+
+💎 为什么这本小说这么爽？
+
+升级快、打脸狠、收获多、感情甜！
+从炼气三层到大帝境，全程无尿点！
+
+📖 《逐出宗门：我激活了万古大帝传承》
+作者：故事販賣機
+
+👇 熬夜也要看完的修仙爽文！
+            </div>
+            <div class="tweet-tags">
+                <span class="tweet-tag">#修仙爽文</span>
+                <span class="tweet-tag">#熬夜必看</span>
+                <span class="tweet-tag">#全程高能</span>
+                <span class="tweet-tag">#大帝传承</span>
+            </div>
+            <div class="tweet-platforms">
+                <span class="platform xiaohongshu">小红书</span>
+                <span class="platform douyin">抖音</span>
+            </div>
+            <button class="copy-btn" onclick="copyTweet('tweet2')">复制推文</button>
+        </div>
+        
+        <!-- 推文3：设定型 -->
+        <div class="tweet-card">
+            <div class="tweet-header">
+                <span class="tweet-type">设定型</span>
+                <span class="tweet-title">介绍设定</span>
+            </div>
+            <div class="tweet-content" id="tweet3">
+🗡️ 万古大帝传承，到底有多强？
+
+📜 《万古帝经》
+大帝级功法，修炼速度是普通功法的100倍！
+
+⚔️ 帝器·万古剑
+可成长性法宝，随主人境界提升而觉醒威能！
+
+🧠 大帝记忆碎片
+万古大帝的战斗经验、炼丹术、阵法，样样精通！
+
+🌟 神秘空间
+时间流速1:10，还有灵药种植功能！
+
+💊 炼丹天赋
+完美品质丹药随手炼制，丹鼎阁圣女主动结交！
+
+📖 《逐出宗门：我激活了万古大帝传承》
+
+👇 看主角如何凭借逆天传承，从废柴到大帝！
+            </div>
+            <div class="tweet-tags">
+                <span class="tweet-tag">#修仙设定</span>
+                <span class="tweet-tag">#大帝传承</span>
+                <span class="tweet-tag">#金手指</span>
+                <span class="tweet-tag">#逆天改命</span>
+            </div>
+            <div class="tweet-platforms">
+                <span class="platform zhihu">知乎</span>
+                <span class="platform weibo">微博</span>
+            </div>
+            <button class="copy-btn" onclick="copyTweet('tweet3')">复制推文</button>
+        </div>
+        
+        <!-- 推文4：情感型 -->
+        <div class="tweet-card">
+            <div class="tweet-header">
+                <span class="tweet-type">情感型</span>
+                <span class="tweet-title">引发共鸣</span>
+            </div>
+            <div class="tweet-content" id="tweet4">
+💕 当所有人抛弃他时，只有她相信他...
+
+他被诬陷偷窃宗门灵药，
+全宗上下无人相信他，
+宗主宣判将他逐出，
+师兄弟冷眼旁观...
+
+只有她——苏清雪，宗主之女，站了出来。
+
+"父亲，林师兄不是那样的人，请查明真相！"
+
+虽然求情被制止，
+但那份信任，
+成为他在绝境中坚持下去的力量。
+
+多年后，当他强势回归——
+整个青云宗跪地求饶，
+唯独她，他温柔以待。
+
+📖 《逐出宗门：我激活了万古大帝传承》
+
+👇 不仅有热血逆袭，还有真挚感情！
+            </div>
+            <div class="tweet-tags">
+                <span class="tweet-tag">#修仙爱情</span>
+                <span class="tweet-tag">#苏清雪</span>
+                <span class="tweet-tag">#林渊</span>
+                <span class="tweet-tag">#感情线</span>
+            </div>
+            <div class="tweet-platforms">
+                <span class="platform xiaohongshu">小红书</span>
+                <span class="platform weibo">微博</span>
+            </div>
+            <button class="copy-btn" onclick="copyTweet('tweet4')">复制推文</button>
+        </div>
+        
+        <!-- 推文5：综合型 -->
+        <div class="tweet-card">
+            <div class="tweet-header">
+                <span class="tweet-type">综合型</span>
+                <span class="tweet-title">综合亮点</span>
+            </div>
+            <div class="tweet-content" id="tweet5">
+🌟 2026年最火爆的修仙爽文来了！
+
+《逐出宗门：我激活了万古大帝传承》
+作者：故事販賣機
+
+📖 故事简介：
+被逐宗门的废柴弟子林渊，濒死之际激活万古大帝传承，获得逆天功法《万古帝经》和帝器万古剑。从此踏上无敌之路，从炼气三层到成就大帝，让所有曾经欺辱他的人跪地求饶！
+
+✨ 核心看点：
+🔥 被逐逆袭，绝境逢生
+⚡ 快速升级，3年成大帝
+💥 装逼打脸，爽点密集
+💕 真挚感情，宗主之女倾心
+⚔️ 正魔大战，斩杀血魔老祖
+
+👇 点击阅读，开启你的修仙之旅！
+            </div>
+            <div class="tweet-tags">
+                <span class="tweet-tag">#修仙爽文</span>
+                <span class="tweet-tag">#大帝传承</span>
+                <span class="tweet-tag">#逆袭打脸</span>
+                <span class="tweet-tag">#2026必看</span>
+            </div>
+            <div class="tweet-platforms">
+                <span class="platform weibo">微博</span>
+                <span class="platform zhihu">知乎</span>
+                <span class="platform douyin">抖音</span>
+            </div>
+            <button class="copy-btn" onclick="copyTweet('tweet5')">复制推文</button>
+        </div>
+        
+        <div class="download-all">
+            <button class="download-btn" onclick="downloadAll()">下载全部推文 (Markdown)</button>
+        </div>
+        
+        <div class="author-info">
+            作者：故事販賣機 | 推广素材生成于 Fiction Crafter v3.0
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">已复制到剪贴板！</div>
+    
+    <script>
+        function copyTweet(id) {
+            const content = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                showToast();
+            });
+        }
+        
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+        
+        function downloadAll() {
+            const tweets = [];
+            for (let i = 1; i <= 5; i++) {
+                tweets.push(document.getElementById('tweet' + i).innerText);
+            }
+            
+            const markdown = `# 《逐出宗门：我激活了万古大帝传承》推广推文
+
+作者：故事販賣機
+
+---
+
+## 推文1：悬念型
+
+${tweets[0]}
+
+---
+
+## 推文2：爽点型
+
+${tweets[1]}
+
+---
+
+## 推文3：设定型
+
+${tweets[2]}
+
+---
+
+## 推文4：情感型
+
+${tweets[3]}
+
+---
+
+## 推文5：综合型
+
+${tweets[4]}
+
+---
+
+*生成于 Fiction Crafter v3.0*
+`;
+            
+            const blob = new Blob([markdown], { type: 'text/markdown' });
+            const link = document.createElement('a');
+            link.download = '逐出宗门我激活了万古大帝传承_推广推文.md';
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        }
+    </script>
+</body>
+</html>

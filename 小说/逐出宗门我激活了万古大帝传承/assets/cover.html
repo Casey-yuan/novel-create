@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《逐出宗门：我激活了万古大帝传承》封面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a52 100%);
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+        }
+        
+        .cover-container {
+            width: 600px;
+            height: 800px;
+            background: linear-gradient(180deg, #0a1628 0%, #1a3a52 30%, #0d2137 70%, #1a1a3e 100%);
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 40px;
+        }
+        
+        /* 星空背景 */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 230px 80px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 400px 60px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 500px 200px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 550px 100px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 100px 250px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 450px 300px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 50px 350px, rgba(255,255,255,0.7), transparent);
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* 灵气光晕 */
+        .aura {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, rgba(255,140,0,0.08) 40%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
+        }
+        
+        /* 装饰线条 */
+        .decoration-line {
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            opacity: 0.6;
+        }
+        
+        .decoration-line.top {
+            top: 120px;
+        }
+        
+        .decoration-line.bottom {
+            bottom: 180px;
+        }
+        
+        /* 主标题 */
+        .title-container {
+            text-align: center;
+            z-index: 10;
+            margin-top: 30px;
+        }
+        
+        .title-main {
+            font-size: 52px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 
+                0 0 10px rgba(255,215,0,0.5),
+                0 0 30px rgba(255,140,0,0.3),
+                0 4px 10px rgba(0,0,0,0.8);
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .title-sub {
+            font-size: 28px;
+            color: #87ceeb;
+            text-shadow: 
+                0 0 10px rgba(135,206,235,0.4),
+                0 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 4px;
+        }
+        
+        /* 核心视觉元素 - 万古剑 */
+        .sword-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 40px 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sword {
+            width: 200px;
+            height: 8px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ffed4e, #ffd700, transparent);
+            border-radius: 4px;
+            transform: rotate(-45deg);
+            box-shadow: 
+                0 0 20px #ffd700,
+                0 0 40px rgba(255,215,0,0.5),
+                0 0 60px rgba(255,140,0,0.3);
+            position: relative;
+        }
+        
+        .sword::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffd700, #ff8c00);
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ffd700;
+        }
+        
+        /* 传承符文 */
+        .rune {
+            position: absolute;
+            font-size: 120px;
+            color: rgba(255,215,0,0.2);
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(255,215,0,0.3);
+        }
+        
+        /* 副标题 */
+        .subtitle {
+            font-size: 20px;
+            color: #b8c5d6;
+            text-align: center;
+            z-index: 10;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        /* 作者信息 */
+        .author-section {
+            text-align: center;
+            z-index: 10;
+            margin-top: 20px;
+        }
+        
+        .author-label {
+            font-size: 14px;
+            color: #778da9;
+            margin-bottom: 8px;
+            letter-spacing: 4px;
+        }
+        
+        .author-name {
+            font-size: 26px;
+            color: #ffd700;
+            font-weight: bold;
+            letter-spacing: 6px;
+            text-shadow: 0 0 15px rgba(255,215,0,0.3);
+        }
+        
+        /* 标签 */
+        .tags {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            z-index: 10;
+        }
+        
+        .tag {
+            padding: 8px 18px;
+            background: rgba(135,206,235,0.15);
+            border: 1px solid rgba(135,206,235,0.4);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #87ceeb;
+            letter-spacing: 2px;
+        }
+        
+        /* 底部装饰 */
+        .footer-text {
+            position: absolute;
+            bottom: 40px;
+            font-size: 14px;
+            color: #415a77;
+            letter-spacing: 8px;
+            z-index: 10;
+        }
+        
+        /* 打印样式 */
+        @media print {
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <div class="stars"></div>
+        <div class="aura"></div>
+        
+        <div class="decoration-line top"></div>
+        
+        <div class="title-container">
+            <div class="title-main">逐出宗门</div>
+            <div class="title-sub">我激活了万古大帝传承</div>
+        </div>
+        
+        <div class="sword-container">
+            <div class="rune">帝</div>
+            <div class="sword"></div>
+        </div>
+        
+        <div class="subtitle">被逐之日 · 大帝降临 · 逆天改命</div>
+        
+        <div class="author-section">
+            <div class="author-label">作者</div>
+            <div class="author-name">故事販賣機</div>
+        </div>
+        
+        <div class="tags">
+            <span class="tag">修仙爽文</span>
+            <span class="tag">大帝传承</span>
+            <span class="tag">逆袭打脸</span>
+        </div>
+        
+        <div class="footer-text">万古帝尊 · 绝世强者</div>
+        
+        <div class="decoration-line bottom"></div>
+    </div>
+</body>
+</html>
