@@ -435,6 +435,20 @@ main {
   flex: 1;
 }
 
+/* 章节头部元信息 */
+.chapter-header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* 字数统计 */
+.word-count {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
 /* 复制按钮 */
 .copy-btn {
   display: inline-flex;

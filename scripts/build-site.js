@@ -54,6 +54,25 @@ function renderTemplate(template, data) {
   });
 }
 
+// 计算字数（中文字符 + 英文单词）
+function countWords(text) {
+  // 移除 Markdown 标记和空白字符
+  const cleanText = text
+    .replace(/[#*_`~\[\]\(\)!]/g, '')
+    .replace(/\s+/g, '');
+
+  // 统计中文字符
+  const chineseChars = (cleanText.match(/[\u4e00-\u9fa5]/g) || []).length;
+
+  // 统计英文单词（连续的英文字母）
+  const englishWords = (cleanText.match(/[a-zA-Z]+/g) || []).length;
+
+  // 统计数字（连续的数字）
+  const numbers = (cleanText.match(/\d+/g) || []).length;
+
+  return chineseChars + englishWords + numbers;
+}
+
 // 提取章节信息
 function extractChapterInfo(content, filename) {
   const lines = content.split('\n');
@@ -74,7 +93,9 @@ function extractChapterInfo(content, filename) {
     }
   }
 
-  return { title, body };
+  const wordCount = countWords(body);
+
+  return { title, body, wordCount };
 }
 
 // 解析章节号
@@ -164,6 +185,7 @@ function getNovelChapters(novelPath) {
           filename: filename,
           title: info.title,
           content: info.body,
+          wordCount: info.wordCount,
           path: filePath
         };
       });
@@ -297,6 +319,7 @@ function generateChapterPage(novel, volume, chapter, allVolumes, prevChapter, ne
     title: `${chapter.title} - ${novel.name}`,
     novelName: novel.name,
     novelLink: `${basePath}/${encodedNovelName}/index.html`,
+    wordCount: chapter.wordCount.toLocaleString('zh-CN'),
     volumeName: volume.name,
     chapterTitle: chapter.title,
     chapterNumber: chapter.number,
